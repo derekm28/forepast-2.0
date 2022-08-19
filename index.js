@@ -51,10 +51,11 @@ const relevantFields = [
 
   //CHECK TO SEE IF FILE EXIST
 
-  if (existsSync(`./static/${fileName}`)) {
+  if (existsSync(`./location-date/${fileName}`)) {
     console.log('This file exists. Here is the information:');
 
-    const contents = readFileSync(`./static/${fileName}`).toString();
+    //IF FILE EXISTS, READ FILE
+    const contents = readFileSync(`./location-date/${fileName}`).toString();
     console.log(JSON.parse(contents));
     return;
   }
@@ -73,9 +74,10 @@ const relevantFields = [
   }
   const dataToWrite = JSON.stringify(weatherData);
 
-  fs.writeFileSync(`./static/${fileName}`, dataToWrite);
+  //SAVE THIS DATA SOMEWHERE
+
+  fs.writeFileSync(`./location-date/${fileName}`, dataToWrite);
   console.log('Finished Running');
   console.log(weatherData);
 
-  //SAVE THIS DATA SOMEWHERE
 })();
